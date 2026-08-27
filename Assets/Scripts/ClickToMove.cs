@@ -12,6 +12,7 @@ public class ClickToMove : MonoBehaviour
    Camera camera;
    Coroutine coroutine;
    Vector3 target_ubi,destination;
+   Vector3 floor,restricted,interactable;
    Vector2 mouse_position;
    Ray ray;
    bool collision;
@@ -72,7 +73,7 @@ public class ClickToMove : MonoBehaviour
    private void OnDrawGizmos()
    {
         Gizmos.color=Color.red;
-        Gizmos.DrawSphere(target_ubi,1);
+        Gizmos.DrawSphere(target_ubi,.2f);
    }
 
 }
