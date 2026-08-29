@@ -2,25 +2,27 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
 public class ClickToMove : MonoBehaviour
 {
-   [SerializeField]
-   private InputAction move_click;
-   [SerializeField]
-   private float speed=10f;
+   [SerializeField] private InputAction move_click;
+   [SerializeField] private float speed=10f;
+   [SerializeField] private GameObject moveIndicator;
+
 
    Camera camera;
    Coroutine coroutine;
    Vector3 target_ubi,destination;
-   Vector3 floor,restricted,interactable;
    Vector2 mouse_position;
    Ray ray;
    bool collision;
+
 
    private void Awake()
    {
         camera=Camera.main;
    }
+
 
    private void OnEnable()
    {
@@ -28,11 +30,13 @@ public class ClickToMove : MonoBehaviour
         move_click.performed += Move; //No es suma, es funcion que debe ejecutarse cuando esa accion se cumpla
    }
 
+
    private void OnDisable()
    {
-        move_click.performed -= Move; 
+        move_click.performed -= Move;
         move_click.Disable();
    }
+
 
    private void Move(InputAction.CallbackContext context) //informacion de lo que acaba de ocurrir
    {
@@ -54,11 +58,17 @@ public class ClickToMove : MonoBehaviour
             }
             Vector3 target = hit.point;
             target.y = transform.position.y;
+            Vector3 indicatorPosition = hit.point;
+            indicatorPosition.y += 0.05f;
+            moveIndicator.SetActive(true);
+            moveIndicator.transform.position = indicatorPosition;
             coroutine = StartCoroutine(PlayerMoveTowards(target));
             target_ubi = target;
 
+
         }
    }
+
 
    private IEnumerator PlayerMoveTowards(Vector3 target) //Esto hace que se mueva poco a poquito en vez de que solo se telertransporte (es la coroutine)
    {
@@ -70,10 +80,12 @@ public class ClickToMove : MonoBehaviour
         }
    }
 
+
    private void OnDrawGizmos()
    {
         Gizmos.color=Color.red;
         Gizmos.DrawSphere(target_ubi,.2f);
    }
+
 
 }
