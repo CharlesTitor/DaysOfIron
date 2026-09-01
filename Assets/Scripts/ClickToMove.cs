@@ -10,6 +10,8 @@ public class ClickToMove : MonoBehaviour
    private float speed=10f;
      [SerializeField]
      private LayerMask GroundLayer;
+     [SerializeField]
+     private LayerMask InvisibleWallLayer;
 
    Camera camera;
    Coroutine coroutine;
@@ -47,7 +49,7 @@ public class ClickToMove : MonoBehaviour
         ray= camera.ScreenPointToRay(mouse_position);
         RaycastHit hit; //guardo la coordenada de donde llego el laser
         collision=Physics.Raycast(ray, out hit); //Esto es para que le devuelva la informacion a hit y hit lo ponga en su memoria
-        if (collision && hit.collider.gameObject.layer == LayerMask.NameToLayer("Ground")) //si toca algo que no es el piso
+        if (collision && hit.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))//si toca algo que no es el piso
         {
             if (coroutine!=null) //Si se clickean en muchos lugares pausa en el que estaba y cambia su direccion al ultimo lugar donde clickeaste
             {
