@@ -5,11 +5,15 @@ using UnityEngine.InputSystem;
 
 public class ClickToMove : MonoBehaviour
 {
-   [SerializeField] private InputAction move_click;
-   [SerializeField] private float speed=10f;
+   [SerializeField]
+   private InputAction move_click;
+   [SerializeField]
+   private float speed=10f;
+     [SerializeField]
+     private LayerMask GroundLayer;
+     [SerializeField]
+     private LayerMask InvisibleWallLayer;
    [SerializeField] private GameObject moveIndicator;
-   [SerializeField] private LayerMask GroundLayer;
-   [SerializeField] private LayerMask InvisibleWallLayer;
 
 
    Camera camera;
