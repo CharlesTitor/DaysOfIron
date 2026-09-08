@@ -13,6 +13,7 @@ public class ClickToMove : MonoBehaviour
      private LayerMask GroundLayer;
      [SerializeField]
      private LayerMask InvisibleWallLayer;
+   [SerializeField] private GameObject moveIndicator;
 
 
    Camera camera;
