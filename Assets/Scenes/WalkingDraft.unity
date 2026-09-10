@@ -145,6 +145,53 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.36, y: 1.8, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &208278969
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 208278971}
+  - component: {fileID: 208278970}
+  m_Layer: 0
+  m_Name: Game Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &208278970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208278969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96df7d4f7deb893429b9a7f290e451bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CursorManager
+  cursorTexture: {fileID: 2800000, guid: a3b8da84e4be6224e80d4796c88528bc, type: 3}
+  interactTexture: {fileID: 2800000, guid: 00fdeb150c91e4a4c97a3b17b4ed982c, type: 3}
+  forbiddenTexture: {fileID: 2800000, guid: f8a9001c9621e22408c5798046ce70a3, type: 3}
+--- !u!4 &208278971
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208278969}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.09171, y: 0.01795, z: 2.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &352516420
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,6 +330,7 @@ GameObject:
   - component: {fileID: 463886881}
   - component: {fileID: 463886880}
   - component: {fileID: 463886879}
+  - component: {fileID: 463886882}
   m_Layer: 9
   m_Name: Knight_idle_01
   m_TagString: Untagged
@@ -327,6 +375,7 @@ MonoBehaviour:
   InvisibleWallLayer:
     serializedVersion: 2
     m_Bits: 0
+  moveIndicator: {fileID: 1858215812}
 --- !u!212 &463886880
 SpriteRenderer:
   serializedVersion: 3
@@ -403,6 +452,20 @@ Transform:
   - {fileID: 664993743}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &463886882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463886878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2be6ef233d4725745941cf25ba0a61ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInteractor
+  _castDistance: 5
+  _raycastOffset: {x: 0, y: 0.3, z: 0}
 --- !u!1 &583479957 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7947198778704983309, guid: 44a2555a2b79caf49b8e1ac0715171be, type: 3}
@@ -1108,6 +1171,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.36, y: 1.8, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1858215812 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1902839626373450777, guid: 377bd8e4df08cc444b8742609e5ebd73, type: 3}
+  m_PrefabInstance: {fileID: 667697536}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8247064277537982987
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1184,3 +1252,5 @@ SceneRoots:
   - {fileID: 463886881}
   - {fileID: 789771366}
   - {fileID: 1308737527}
+  - {fileID: 667697536}
+  - {fileID: 208278971}
