@@ -5,17 +5,23 @@ using UnityEngine.InputSystem;
 
 public class ClickToMove : MonoBehaviour
 {
-   [SerializeField] private InputAction move_click;
-   [SerializeField] private float speed=10f;
+   [SerializeField]
+   private InputAction move_click;
+   [SerializeField]
+   private float speed=10f;
+     [SerializeField]
+     private LayerMask GroundLayer;
+     [SerializeField]
+     private LayerMask InvisibleWallLayer;
    [SerializeField] private GameObject moveIndicator;
 
 
-   Camera camera;
-   Coroutine coroutine;
-   Vector3 target_ubi,destination;
-   Vector2 mouse_position;
-   Ray ray;
-   bool collision;
+   private Camera camera;
+   private Coroutine coroutine;
+   private Vector3 target_ubi,destination;
+   private Vector2 mouse_position;
+   private Ray ray;
+   private bool collision;
 
 
    private void Awake()
@@ -50,7 +56,7 @@ public class ClickToMove : MonoBehaviour
         ray= camera.ScreenPointToRay(mouse_position);
         RaycastHit hit; //guardo la coordenada de donde llego el laser
         collision=Physics.Raycast(ray, out hit); //Esto es para que le devuelva la informacion a hit y hit lo ponga en su memoria
-        if (collision==true)
+        if (collision && hit.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))//si toca algo que no es el piso
         {
             if (coroutine!=null) //Si se clickean en muchos lugares pausa en el que estaba y cambia su direccion al ultimo lugar donde clickeaste
             {
@@ -78,6 +84,7 @@ public class ClickToMove : MonoBehaviour
             transform.position=destination;
             yield return null;
         }
+        moveIndicator.SetActive(false);
    }
 
 
