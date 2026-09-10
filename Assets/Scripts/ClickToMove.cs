@@ -16,12 +16,12 @@ public class ClickToMove : MonoBehaviour
    [SerializeField] private GameObject moveIndicator;
 
 
-   Camera camera;
-   Coroutine coroutine;
-   Vector3 target_ubi,destination;
-   Vector2 mouse_position;
-   Ray ray;
-   bool collision;
+   private Camera camera;
+   private Coroutine coroutine;
+   private Vector3 target_ubi,destination;
+   private Vector2 mouse_position;
+   private Ray ray;
+   private bool collision;
 
 
    private void Awake()
@@ -84,6 +84,7 @@ public class ClickToMove : MonoBehaviour
             transform.position=destination;
             yield return null;
         }
+        moveIndicator.SetActive(false);
    }
 
 
