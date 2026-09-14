@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
 public class ClickToMove : MonoBehaviour
 {
    [SerializeField]
@@ -12,18 +13,22 @@ public class ClickToMove : MonoBehaviour
      private LayerMask GroundLayer;
      [SerializeField]
      private LayerMask InvisibleWallLayer;
+   [SerializeField] private GameObject moveIndicator;
 
-   Camera camera;
-   Coroutine coroutine;
-   Vector3 target_ubi,destination;
-   Vector2 mouse_position;
-   Ray ray;
-   bool collision;
+
+   private Camera camera;
+   private Coroutine coroutine;
+   private Vector3 target_ubi,destination;
+   private Vector2 mouse_position;
+   private Ray ray;
+   private bool collision;
+
 
    private void Awake()
    {
         camera=Camera.main;
    }
+
 
    private void OnEnable()
    {
@@ -31,11 +36,13 @@ public class ClickToMove : MonoBehaviour
         move_click.performed += Move; //No es suma, es funcion que debe ejecutarse cuando esa accion se cumpla
    }
 
+
    private void OnDisable()
    {
-        move_click.performed -= Move; 
+        move_click.performed -= Move;
         move_click.Disable();
    }
+
 
    private void Move(InputAction.CallbackContext context) //informacion de lo que acaba de ocurrir
    {
@@ -57,11 +64,17 @@ public class ClickToMove : MonoBehaviour
             }
             Vector3 target = hit.point;
             target.y = transform.position.y;
+            Vector3 indicatorPosition = hit.point;
+            indicatorPosition.y += 0.05f;
+            moveIndicator.SetActive(true);
+            moveIndicator.transform.position = indicatorPosition;
             coroutine = StartCoroutine(PlayerMoveTowards(target));
             target_ubi = target;
 
+
         }
    }
+
 
    private IEnumerator PlayerMoveTowards(Vector3 target) //Esto hace que se mueva poco a poquito en vez de que solo se telertransporte (es la coroutine)
    {
@@ -71,12 +84,15 @@ public class ClickToMove : MonoBehaviour
             transform.position=destination;
             yield return null;
         }
+        moveIndicator.SetActive(false);
    }
+
 
    private void OnDrawGizmos()
    {
         Gizmos.color=Color.red;
-        Gizmos.DrawSphere(target_ubi,1);
+        Gizmos.DrawSphere(target_ubi,.2f);
    }
+
 
 }
