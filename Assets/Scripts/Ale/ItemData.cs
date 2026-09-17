@@ -7,8 +7,10 @@ public class ItemData : ScriptableObject
 {
     public enum ItemType //declarar una lista de opciones
     {
-        Consumable,
-        Equipment,
+        Materials,
+        Tools,
+        Components, //No se como ponerle a lo de la bombs pero va aquí
+        Armor
     }
     public string itemName;
     public Sprite itemIcon;

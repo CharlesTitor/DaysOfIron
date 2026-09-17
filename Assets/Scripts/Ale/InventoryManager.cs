@@ -33,17 +33,17 @@ public class InventoryManager : MonoBehaviour
         GetComponent<InventoryManagerUI>().RefreshInventoryUI();
     }
 
-    public void AddItem(ItemData a, int b)
+    public void AddItem(ItemData typeOfItem, int cuantityOfItem)
     {
         foreach (Item item in inventory)
         {
-            if(item.ItemData.itemName == a.itemName)
+            if(item.ItemData.itemName == typeOfItem.itemName)
             {
-                item.itemQuantity += b;
+                item.itemQuantity += cuantityOfItem;
                 return;
             }
         }
 
-        inventory.Add(new Item { ItemData = a, itemQuantity = b });
+        inventory.Add(new Item { ItemData = typeOfItem, itemQuantity = cuantityOfItem });
     }
 }

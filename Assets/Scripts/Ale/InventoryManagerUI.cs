@@ -14,9 +14,9 @@ public class InventoryManagerUI : MonoBehaviour
     public void RefreshInventoryUI()
     {
         //0. Clear existing UI elements
-        foreach(Transform t in inventoryContainer)
+        foreach(Transform slot in inventoryContainer)
         {
-            Destroy(t.gameObject);
+            Destroy(slot.gameObject);
         }
 
         //1. Create UI elements for each item in the inventory
