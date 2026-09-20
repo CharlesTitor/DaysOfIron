@@ -7,9 +7,6 @@ public class InventoryManager : MonoBehaviour
 
     public List<Item> inventory = new List<Item>();
 
-    [Header("Debug")]
-    public ItemData testItemData;
-    public ItemData testItemData2;
     private void Awake()
     {
         if (Instance == null)
@@ -26,9 +23,7 @@ public class InventoryManager : MonoBehaviour
 
     private void Start()
     {
-        AddItem(testItemData, 5);
-        AddItem(testItemData2, 1);
-        AddItem(testItemData, 10);
+        
 
         GetComponent<InventoryManagerUI>().RefreshInventoryUI();
     }

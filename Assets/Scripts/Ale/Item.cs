@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public class Item : MonoBehaviour
+public class Item
 {
     public ItemData ItemData;
 
