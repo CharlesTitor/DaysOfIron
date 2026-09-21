@@ -1,10 +1,13 @@
 // Tutorial video: https://www.youtube.com/watch?v=Eg7oP7mcNbc
 
 using UnityEngine;
+using UnityEngine.Device;
 using UnityEngine.InputSystem;
 
 public class PlayerInteractor : MonoBehaviour
 {
+    [SerializeField] private GameObject _inventoryScreen;
+
     [SerializeField] private float _castDistance = 5f;
     [SerializeField] private Vector3 _raycastOffset = new Vector3(0, 0.3f, 0);
 
@@ -13,6 +16,8 @@ public class PlayerInteractor : MonoBehaviour
         if (Mouse.current.rightButton.wasPressedThisFrame)
         {
             Debug.Log("Interact");
+            Time.timeScale = 0f;
+            _inventoryScreen.SetActive(true);
             if (DoInteractionTest(out IInteractable interactable))
             {
                 if(interactable.CanInteract())
