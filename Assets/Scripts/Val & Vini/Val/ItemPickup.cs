@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class NewMonoBehaviourScript : MonoBehaviour, IPickable
+public class ItemPickup : MonoBehaviour, IPickable
 {
     public ItemData ItemData;
     [SerializeField] private float _pickupDistance = 5f;
