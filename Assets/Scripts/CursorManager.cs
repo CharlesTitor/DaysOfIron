@@ -30,6 +30,7 @@ public class CursorManager : MonoBehaviour
         switch (cursorType)
         {
             case CursorType.Default:
+                _cursorHotSpot = new Vector2(0f, 0f);
                 Cursor.SetCursor(_cursorTexture, _cursorHotSpot, CursorMode.Auto);
                 break;
             case CursorType.Interactable:
