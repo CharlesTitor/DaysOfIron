@@ -1,39 +1,26 @@
 using UnityEngine;
 
-public class NewMonoBehaviourScript : MonoBehaviour
+public class NewMonoBehaviourScript : MonoBehaviour, IPickable
 {
     public ItemData ItemData;
+    [SerializeField] private float _pickupDistance = 5f;
+    [SerializeField] private int _quantity = 1;
 
-    private bool _mouseOver=false;
 
-    private void OnMouseEnter()
+    private void OnMouseDown()
     {
-        _mouseOver=true;
-    }
-
-    private void OnMouseExit()
-    {
-        _mouseOver=false;
-    }
-
-    private void Update()
-    {
-        if (_mouseOver == true && Input.GetKeyDown(KeyCode.C))
+        //TODO : Change Camera.main.transform.position to player position
+        if (Vector3.Distance(this.transform.position, Camera.main.transform.position) <= _pickupDistance)
         {
-            PickUpItem();
+            PickUp();
         }
     }
 
-    private void PickUpItem()
+    public void PickUp()
     {
-        InventoryManager.Instance.AddItem(ItemData, 1);
+        InventoryManager.Instance.AddItem(ItemData, _quantity);
 
-        InventoryManagerUI inventoryUI= FindObjectOfType<InventoryManagerUI>();
-
-        if (inventoryUI != null)
-        {
-            inventoryUI.RefreshInventoryUI();
-        }
+        InventoryManagerUI.Instance.RefreshInventoryUI();
 
         Destroy(gameObject);
     }

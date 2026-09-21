@@ -32,7 +32,7 @@ public class InventoryManager : MonoBehaviour
     {
         foreach (Item item in inventory)
         {
-            if(item.ItemData.itemName == typeOfItem.itemName)
+            if(item.ItemData.ItemName == typeOfItem.ItemName)
             {
                 item.itemQuantity += cuantityOfItem;
                 return;

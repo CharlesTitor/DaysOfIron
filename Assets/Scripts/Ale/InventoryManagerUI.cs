@@ -3,8 +3,24 @@ using UnityEngine.UI;
 
 public class InventoryManagerUI : MonoBehaviour
 {
+    public static InventoryManagerUI Instance;
+
     public GameObject itemSlotPrefab;
     public Transform inventoryContainer;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void Start()
     {
@@ -26,8 +42,8 @@ public class InventoryManagerUI : MonoBehaviour
 
             ItemSlotUI itemSlotUI = newItemSlot.GetComponent<ItemSlotUI>();
 
-            itemSlotUI.itemIconImage.sprite = item.ItemData.itemIcon;
-            itemSlotUI.itemNameText.text = item.ItemData.itemName;
+            itemSlotUI.itemIconImage.sprite = item.ItemData.ItemIcon;
+            itemSlotUI.itemNameText.text = item.ItemData.ItemName;
             itemSlotUI.itemQuantityText.text = "x" + item.itemQuantity.ToString();
         }
     }

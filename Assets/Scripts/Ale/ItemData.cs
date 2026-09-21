@@ -1,19 +1,25 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "ItemData", menuName = "Inventory/New Item")]
 
 
 public class ItemData : ScriptableObject
 {
-    public enum ItemType //declarar una lista de opciones
+    [FormerlySerializedAs("itemName")]
+    public string ItemName;
+    [FormerlySerializedAs("itemIcon")]
+    public Sprite ItemIcon;
+    [FormerlySerializedAs("itemDescripcion")]
+    public string ItemDescription;
+    [FormerlySerializedAs("itemType")]
+    public ItemTypeEnum ItemType;
+
+    public enum ItemTypeEnum //declarar una lista de opciones
     {
         Materials,
         Tools,
         Components, //No se como ponerle a lo de la bombs pero va aquí
         Armor
     }
-    public string itemName;
-    public Sprite itemIcon;
-    public string itemDescripcion;
-    public ItemType itemType;
 }
