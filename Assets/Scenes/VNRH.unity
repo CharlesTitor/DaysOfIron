@@ -425,7 +425,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -453,7 +453,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &355100975
 RectTransform:
@@ -644,6 +644,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
   ItemData: {fileID: 11400000, guid: d251c330ecb85dc43b99668a93984231, type: 2}
+  _pickupDistance: 5
+  _quantity: 1
 --- !u!212 &1034823630
 SpriteRenderer:
   serializedVersion: 3
@@ -904,6 +906,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
   ItemData: {fileID: 11400000, guid: d251c330ecb85dc43b99668a93984231, type: 2}
+  _pickupDistance: 5
+  _quantity: 1
 --- !u!212 &1210216482
 SpriteRenderer:
   serializedVersion: 3
@@ -1053,6 +1057,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
   ItemData: {fileID: 11400000, guid: d251c330ecb85dc43b99668a93984231, type: 2}
+  _pickupDistance: 5
+  _quantity: 1
 --- !u!212 &1429122566
 SpriteRenderer:
   serializedVersion: 3
@@ -2075,6 +2081,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
   ItemData: {fileID: 11400000, guid: d251c330ecb85dc43b99668a93984231, type: 2}
+  _pickupDistance: 5
+  _quantity: 1
 --- !u!212 &1952076770
 SpriteRenderer:
   serializedVersion: 3

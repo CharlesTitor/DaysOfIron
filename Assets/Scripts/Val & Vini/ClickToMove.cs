@@ -1,27 +1,30 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 
 public class ClickToMove : MonoBehaviour
 {
-   [SerializeField]
-   private InputAction move_click;
-   [SerializeField]
-   private float speed=10f;
-     [SerializeField]
-     private LayerMask GroundLayer;
-     [SerializeField]
-     private LayerMask InvisibleWallLayer;
-   [SerializeField] private GameObject moveIndicator;
+    [FormerlySerializedAs("move_click")]
+    [SerializeField] private InputAction _moveClick;
+    [FormerlySerializedAs("speed")]
+    [SerializeField] private float _speed=10f;
+    [FormerlySerializedAs("ground_layer")]
+    [SerializeField] private LayerMask _groundLayer;
+    [FormerlySerializedAs("invisible_wall_layer")]
+    [SerializeField] private LayerMask _invisibleWallLayer;
+    [FormerlySerializedAs("move_indicator")]
+    [SerializeField] private GameObject _moveIndicator;
 
 
    private Camera camera;
    private Coroutine coroutine;
-   private Vector3 target_ubi,destination;
-   private Vector2 mouse_position;
+   private Vector3 targetUbication;
+   private Vector3 destination;
+   private Vector2 mousePosition;
    private Ray ray;
-   private bool collision;
+   private bool isColliding;
 
 
    private void Awake()
@@ -32,15 +35,15 @@ public class ClickToMove : MonoBehaviour
 
    private void OnEnable()
    {
-        move_click.Enable();
-        move_click.performed += Move; //No es suma, es funcion que debe ejecutarse cuando esa accion se cumpla
+        _moveClick.Enable();
+        _moveClick.performed += Move; //No es suma, es funcion que debe ejecutarse cuando esa accion se cumpla
    }
 
 
    private void OnDisable()
    {
-        move_click.performed -= Move;
-        move_click.Disable();
+        _moveClick.performed -= Move;
+        _moveClick.Disable();
    }
 
 
@@ -52,11 +55,11 @@ public class ClickToMove : MonoBehaviour
             -Donde damos click-> saca el rayo laser de ahi hasta que toque piso (ese es z)
             Physics.Raycast= pregunta si el rayo choco con piso
         */
-        mouse_position=Mouse.current.position.ReadValue();
-        ray= camera.ScreenPointToRay(mouse_position);
+        mousePosition=Mouse.current.position.ReadValue();
+        ray= camera.ScreenPointToRay(mousePosition);
         RaycastHit hit; //guardo la coordenada de donde llego el laser
-        collision=Physics.Raycast(ray, out hit); //Esto es para que le devuelva la informacion a hit y hit lo ponga en su memoria
-        if (collision && hit.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))//si toca algo que no es el piso
+        isColliding=Physics.Raycast(ray, out hit); //Esto es para que le devuelva la informacion a hit y hit lo ponga en su memoria
+        if (isColliding && hit.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))//si toca algo que no es el piso
         {
             if (coroutine!=null) //Si se clickean en muchos lugares pausa en el que estaba y cambia su direccion al ultimo lugar donde clickeaste
             {
@@ -66,10 +69,10 @@ public class ClickToMove : MonoBehaviour
             target.y = transform.position.y;
             Vector3 indicatorPosition = hit.point;
             indicatorPosition.y += 0.05f;
-            moveIndicator.SetActive(true);
-            moveIndicator.transform.position = indicatorPosition;
+            _moveIndicator.SetActive(true);
+            _moveIndicator.transform.position = indicatorPosition;
             coroutine = StartCoroutine(PlayerMoveTowards(target));
-            target_ubi = target;
+            targetUbication = target;
 
 
         }
@@ -80,18 +83,18 @@ public class ClickToMove : MonoBehaviour
    {
         while (Vector3.Distance(transform.position,target)>0.1f)
         {
-            destination= Vector3.MoveTowards(transform.position,target, speed*Time.deltaTime);
+            destination= Vector3.MoveTowards(transform.position,target, _speed*Time.deltaTime);
             transform.position=destination;
             yield return null;
         }
-        moveIndicator.SetActive(false);
+        _moveIndicator.SetActive(false);
    }
 
 
    private void OnDrawGizmos()
    {
         Gizmos.color=Color.red;
-        Gizmos.DrawSphere(target_ubi,.2f);
+        Gizmos.DrawSphere(targetUbication,.2f);
    }
 
 
