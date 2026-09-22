@@ -198,11 +198,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &149641310 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1902839626373450777, guid: 377bd8e4df08cc444b8742609e5ebd73, type: 3}
-  m_PrefabInstance: {fileID: 201359400}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &201359400
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1415,9 +1410,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96df7d4f7deb893429b9a7f290e451bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CursorManager
-  cursorTexture: {fileID: 2800000, guid: a3b8da84e4be6224e80d4796c88528bc, type: 3}
-  interactTexture: {fileID: 2800000, guid: 00fdeb150c91e4a4c97a3b17b4ed982c, type: 3}
-  forbiddenTexture: {fileID: 2800000, guid: f8a9001c9621e22408c5798046ce70a3, type: 3}
+  _cursorTexture: {fileID: 2800000, guid: a3b8da84e4be6224e80d4796c88528bc, type: 3}
+  _interactTexture: {fileID: 2800000, guid: 00fdeb150c91e4a4c97a3b17b4ed982c, type: 3}
+  _talkTexture: {fileID: 2800000, guid: d013d6f3364284c4d8fd003de96a1b09, type: 3}
+  _forbiddenTexture: {fileID: 2800000, guid: f8a9001c9621e22408c5798046ce70a3, type: 3}
 --- !u!4 &1558168689
 Transform:
   m_ObjectHideFlags: 0
@@ -1766,6 +1762,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2be6ef233d4725745941cf25ba0a61ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInteractor
+  _inventoryScreen: {fileID: 0}
   _castDistance: 5
   _raycastOffset: {x: 0, y: 0.3, z: 0}
 --- !u!114 &1733550316
@@ -1780,7 +1777,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4abcff958f2777d49978b88baa6dcc52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClickToMove
-  move_click:
+  _moveClick:
     m_Name: Move_click
     m_Type: 0
     m_ExpectedControlType: 
@@ -1798,14 +1795,14 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
     m_Priority: 0
-  speed: 2
-  GroundLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  InvisibleWallLayer:
+  _speed: 2
+  _groundLayer:
     serializedVersion: 2
     m_Bits: 0
-  moveIndicator: {fileID: 149641310}
+  _invisibleWallLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  _moveIndicator: {fileID: 0}
 --- !u!212 &1733550317
 SpriteRenderer:
   serializedVersion: 3
