@@ -380,7 +380,7 @@ GameObject:
   - component: {fileID: 355100973}
   - component: {fileID: 355100972}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Inventory_canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -598,6 +598,8 @@ GameObject:
   - component: {fileID: 1034823630}
   - component: {fileID: 1034823629}
   - component: {fileID: 1034823628}
+  - component: {fileID: 1034823633}
+  - component: {fileID: 1034823632}
   m_Layer: 0
   m_Name: ingots (1)
   m_TagString: Untagged
@@ -639,8 +641,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
   ItemData: {fileID: 11400000, guid: d251c330ecb85dc43b99668a93984231, type: 2}
-  _pickupDistance: 5
+  _pickupDistance: 1.5
   _quantity: 1
+  _playerPosition: {fileID: 1733550314}
 --- !u!212 &1034823630
 SpriteRenderer:
   serializedVersion: 3
@@ -716,6 +719,46 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1034823632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1034823627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 508f1c95945996b45a9f86152c865d1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CursorObject
+  _cursorType: 1
+--- !u!54 &1034823633
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1034823627}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1070834177 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7947198778704983309, guid: 44a2555a2b79caf49b8e1ac0715171be, type: 3}
@@ -881,6 +924,8 @@ GameObject:
   - component: {fileID: 1210216482}
   - component: {fileID: 1210216481}
   - component: {fileID: 1210216484}
+  - component: {fileID: 1210216486}
+  - component: {fileID: 1210216485}
   m_Layer: 0
   m_Name: ingots
   m_TagString: Untagged
@@ -901,8 +946,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
   ItemData: {fileID: 11400000, guid: d251c330ecb85dc43b99668a93984231, type: 2}
-  _pickupDistance: 5
+  _pickupDistance: 1.5
   _quantity: 1
+  _playerPosition: {fileID: 1733550314}
 --- !u!212 &1210216482
 SpriteRenderer:
   serializedVersion: 3
@@ -999,6 +1045,51 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5, y: 0.5, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1210216485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210216480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 508f1c95945996b45a9f86152c865d1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CursorObject
+  _cursorType: 1
+--- !u!54 &1210216486
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210216480}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!1 &1346144357 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1902839626373450777, guid: 377bd8e4df08cc444b8742609e5ebd73, type: 3}
+  m_PrefabInstance: {fileID: 201359400}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1429122563
 GameObject:
   m_ObjectHideFlags: 0
@@ -1011,6 +1102,8 @@ GameObject:
   - component: {fileID: 1429122566}
   - component: {fileID: 1429122565}
   - component: {fileID: 1429122564}
+  - component: {fileID: 1429122569}
+  - component: {fileID: 1429122568}
   m_Layer: 0
   m_Name: ingots (2)
   m_TagString: Untagged
@@ -1052,8 +1145,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
   ItemData: {fileID: 11400000, guid: d251c330ecb85dc43b99668a93984231, type: 2}
-  _pickupDistance: 5
+  _pickupDistance: 1.5
   _quantity: 1
+  _playerPosition: {fileID: 1733550314}
 --- !u!212 &1429122566
 SpriteRenderer:
   serializedVersion: 3
@@ -1129,6 +1223,46 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1429122568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429122563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 508f1c95945996b45a9f86152c865d1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CursorObject
+  _cursorType: 1
+--- !u!54 &1429122569
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429122563}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1436544725
 GameObject:
   m_ObjectHideFlags: 0
@@ -1278,6 +1412,8 @@ GameObject:
   - component: {fileID: 1493817190}
   - component: {fileID: 1493817189}
   - component: {fileID: 1493817188}
+  - component: {fileID: 1493817193}
+  - component: {fileID: 1493817192}
   m_Layer: 0
   m_Name: bracers
   m_TagString: Untagged
@@ -1319,8 +1455,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickup
   ItemData: {fileID: 11400000, guid: 833e4ffd28c112343a3d5c8da7e88d96, type: 2}
-  _pickupDistance: 1
+  _pickupDistance: 1.5
   _quantity: 1
+  _playerPosition: {fileID: 1733550314}
 --- !u!212 &1493817190
 SpriteRenderer:
   serializedVersion: 3
@@ -1396,6 +1533,46 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1493817192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1493817187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 508f1c95945996b45a9f86152c865d1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CursorObject
+  _cursorType: 1
+--- !u!54 &1493817193
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1493817187}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1525682514
 GameObject:
   m_ObjectHideFlags: 0
@@ -1932,7 +2109,7 @@ MonoBehaviour:
   _invisibleWallLayer:
     serializedVersion: 2
     m_Bits: 64
-  _moveIndicator: {fileID: 149641310}
+  _moveIndicator: {fileID: 1346144357}
 --- !u!212 &1733550317
 SpriteRenderer:
   serializedVersion: 3
@@ -2167,6 +2344,8 @@ GameObject:
   - component: {fileID: 1952076770}
   - component: {fileID: 1952076769}
   - component: {fileID: 1952076768}
+  - component: {fileID: 1952076773}
+  - component: {fileID: 1952076772}
   m_Layer: 0
   m_Name: ingots (3)
   m_TagString: Untagged
@@ -2208,8 +2387,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
   ItemData: {fileID: 11400000, guid: d251c330ecb85dc43b99668a93984231, type: 2}
-  _pickupDistance: 5
+  _pickupDistance: 1.5
   _quantity: 1
+  _playerPosition: {fileID: 1733550314}
 --- !u!212 &1952076770
 SpriteRenderer:
   serializedVersion: 3
@@ -2285,6 +2465,46 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1952076772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1952076767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 508f1c95945996b45a9f86152c865d1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CursorObject
+  _cursorType: 1
+--- !u!54 &1952076773
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1952076767}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1984392329 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7947198778704983309, guid: 44a2555a2b79caf49b8e1ac0715171be, type: 3}
