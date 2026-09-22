@@ -1,5 +1,8 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Collider))]
+[RequireComponent (typeof(Rigidbody))]
+
 public class CursorObject : MonoBehaviour
 {
 
@@ -14,15 +17,5 @@ public class CursorObject : MonoBehaviour
 
     private void OnMouseExit() { 
         CursorManager.Instance.SetActiveCursorType(CursorManager.CursorType.Default);
-    }
-
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
     }
 }

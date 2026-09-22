@@ -155,4 +155,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 508f1c95945996b45a9f86152c865d1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CursorObject
-  _cursorType: 2
+  _cursorType: 3

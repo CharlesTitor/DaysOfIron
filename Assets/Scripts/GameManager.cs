@@ -10,11 +10,13 @@ public class GameManager : MonoBehaviour
 
     public void EnterScreen(GameObject screen)
     {
+        Time.timeScale = 0f;
         screen.SetActive(true);
     }
 
     public void ExitScreen(GameObject screen)
     {
+        Time.timeScale = 1f;
         screen.SetActive(false);
     }
 }
