@@ -364,7 +364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4abcff958f2777d49978b88baa6dcc52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClickToMove
-  move_click:
+  _moveClick:
     m_Name: Move_click
     m_Type: 0
     m_ExpectedControlType: 
@@ -382,14 +382,14 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
     m_Priority: 0
-  speed: 2
-  GroundLayer:
+  _speed: 2
+  _groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  InvisibleWallLayer:
+  _invisibleWallLayer:
     serializedVersion: 2
-    m_Bits: 0
-  moveIndicator: {fileID: 1858215812}
+    m_Bits: 64
+  _moveIndicator: {fileID: 1858215812}
 --- !u!212 &463886880
 SpriteRenderer:
   serializedVersion: 3
