@@ -2287,7 +2287,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2be6ef233d4725745941cf25ba0a61ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInteractor
-  _inventoryScreen: {fileID: 0}
   _castDistance: 5
   _raycastOffset: {x: 0, y: 0.3, z: 0}
 --- !u!114 &1733550316
@@ -2318,6 +2317,16 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Move_click
       m_Flags: 0
+    m_Flags: 0
+    m_Priority: 0
+  _interactClick:
+    m_Name: Interact Click
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 534280e9-ab2e-4e61-b917-68afd29de169
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
     m_Flags: 0
     m_Priority: 0
   _speed: 2

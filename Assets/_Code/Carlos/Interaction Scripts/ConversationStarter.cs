@@ -1,24 +1,19 @@
 using DialogueEditor;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-public class ConversationStarter : MonoBehaviour
+public class ConversationStarter : MonoBehaviour , IInteractable
 {
     [SerializeField] private NPCConversation _treeConversation;
+    [SerializeField] private float _interactionDistance = 1f;
 
-    private void OnTriggerStay(Collider other)
+    public bool CanInteract(IInteractor interactor)
     {
-        Debug.Log("Inside");
-        if(other.CompareTag("Player"))
-        {
-            Debug.Log("Tag detected");
-            if (Mouse.current.rightButton.wasPressedThisFrame)
-            {
-                Debug.Log("Conversation tigrered");
-                ConversationManager.Instance.StartConversation(_treeConversation);
-            }
-        }
+        GameObject gameObjectInetactor = (interactor as Component)?.gameObject;
+        return Vector3.Distance(gameObjectInetactor.transform.position, this.transform.position) < _interactionDistance;
+    }
+
+    public void Interact(IInteractor interactor)
+    {
+        ConversationManager.Instance.StartConversation(_treeConversation);
     }
 }

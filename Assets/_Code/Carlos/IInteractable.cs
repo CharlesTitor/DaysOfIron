@@ -4,6 +4,6 @@ using UnityEngine;
 
 public interface IInteractable
 {
-    public bool CanInteract();
-    public bool Interact(PlayerInteractor interactor);
+    public bool CanInteract(IInteractor interactor);
+    public void Interact(IInteractor interactor);
 }
