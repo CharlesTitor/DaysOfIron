@@ -4,10 +4,12 @@ using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 
 
-public class ClickToMove : MonoBehaviour
+public class ClickToMove : MonoBehaviour , IInteractor
 {
     [FormerlySerializedAs("move_click")]
     [SerializeField] private InputAction _moveClick;
+    [SerializeField] private InputAction _interactClick;
+    
     [FormerlySerializedAs("speed")]
     [SerializeField] private float _speed=10f;
     [FormerlySerializedAs("ground_layer")]
@@ -36,14 +38,18 @@ public class ClickToMove : MonoBehaviour
    private void OnEnable()
    {
         _moveClick.Enable();
+        _interactClick.Enable();
         _moveClick.performed += Move; //No es suma, es funcion que debe ejecutarse cuando esa accion se cumpla
+        _interactClick.performed += ClickInteract;
    }
 
 
    private void OnDisable()
    {
         _moveClick.performed -= Move;
+        _interactClick.performed -= ClickInteract;
         _moveClick.Disable();
+        _interactClick.Disable();
    }
 
 
@@ -77,6 +83,21 @@ public class ClickToMove : MonoBehaviour
 
         }
    }
+
+    private void ClickInteract(InputAction.CallbackContext context)
+    {
+        mousePosition = Mouse.current.position.ReadValue();
+        ray = camera.ScreenPointToRay(mousePosition);
+        RaycastHit hit; //guardo la coordenada de donde llego el laser
+        isColliding = Physics.Raycast(ray, out hit); //Esto es para que le devuelva la informacion a hit y hit lo ponga en su memoria
+
+        IInteractable currentInteractable = hit.collider.gameObject.GetComponentInChildren<IInteractable>();
+
+        if (isColliding && currentInteractable != null)//si toca algo que no es el piso
+        {
+            if (currentInteractable.CanInteract(this)) currentInteractable.Interact(this);
+        }
+    }
 
 
    private IEnumerator PlayerMoveTowards(Vector3 target) //Esto hace que se mueva poco a poquito en vez de que solo se telertransporte (es la coroutine)
