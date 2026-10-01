@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 96df7d4f7deb893429b9a7f290e451bc
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _cursorTexture: {fileID: 2800000, guid: a3b8da84e4be6224e80d4796c88528bc, type: 3}
+  - _interactTexture: {fileID: 2800000, guid: 00fdeb150c91e4a4c97a3b17b4ed982c, type: 3}
+  - _talkTexture: {fileID: 2800000, guid: d013d6f3364284c4d8fd003de96a1b09, type: 3}
+  - _forbiddenTexture: {fileID: 2800000, guid: f8a9001c9621e22408c5798046ce70a3, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
