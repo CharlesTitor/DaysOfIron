@@ -17,7 +17,7 @@ public class CursorObject : MonoBehaviour
         if (_cursorType == CursorManager.CursorType.Interactable)
         {
             _startColor = _renderer.material.color;
-            _renderer.material.color = Color.red;
+            _renderer.material.color = Color.yellow;
         }
     }
 
