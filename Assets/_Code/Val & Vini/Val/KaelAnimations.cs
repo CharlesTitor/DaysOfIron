@@ -2,15 +2,18 @@ using UnityEngine;
 
 public class KaelAnimations : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private Animator _kaelAnimator;
+    private bool _isWalking;
+
+    void Awake()
     {
-        
+        _kaelAnimator=GetComponent<Animator();
     }
 
-    // Update is called once per frame
     void Update()
     {
         
     }
+
+
 }
