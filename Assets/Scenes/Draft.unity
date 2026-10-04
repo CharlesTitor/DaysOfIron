@@ -908,6 +908,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 508f1c95945996b45a9f86152c865d1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CursorObject
+  _renderer: {fileID: 0}
   _cursorType: 1
 --- !u!54 &266988521
 Rigidbody:
@@ -1670,6 +1671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 508f1c95945996b45a9f86152c865d1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CursorObject
+  _renderer: {fileID: 0}
   _cursorType: 1
 --- !u!54 &563858910
 Rigidbody:
@@ -2275,6 +2277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 508f1c95945996b45a9f86152c865d1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CursorObject
+  _renderer: {fileID: 0}
   _cursorType: 1
 --- !u!54 &759619153
 Rigidbody:
@@ -3255,6 +3258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 508f1c95945996b45a9f86152c865d1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CursorObject
+  _renderer: {fileID: 0}
   _cursorType: 1
 --- !u!54 &984926984
 Rigidbody:
@@ -5193,6 +5197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 508f1c95945996b45a9f86152c865d1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CursorObject
+  _renderer: {fileID: 0}
   _cursorType: 1
 --- !u!54 &1708398213
 Rigidbody:
@@ -5440,6 +5445,7 @@ GameObject:
   - component: {fileID: 1885547806}
   - component: {fileID: 1885547805}
   - component: {fileID: 1885547804}
+  - component: {fileID: 1885547808}
   m_Layer: 9
   m_Name: Kael
   m_TagString: Untagged
@@ -5607,6 +5613,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!114 &1885547808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1885547802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48fdb6c46fa2fdb4eb1d4b74f3b3c8c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KaelAnimations
 --- !u!1 &1902825491
 GameObject:
   m_ObjectHideFlags: 0
