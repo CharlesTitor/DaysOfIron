@@ -554,7 +554,7 @@ GameObject:
   - component: {fileID: 9031663531036903611}
   - component: {fileID: 4312365388128841616}
   m_Layer: 0
-  m_Name: Shack_PF (0)
+  m_Name: HouseKael
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

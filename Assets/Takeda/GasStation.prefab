@@ -440,7 +440,7 @@ GameObject:
   - component: {fileID: 6918116771588012338}
   - component: {fileID: 4601588942305181684}
   m_Layer: 0
-  m_Name: Building1_PF (0)
+  m_Name: GasStation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

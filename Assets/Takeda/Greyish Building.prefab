@@ -592,7 +592,7 @@ GameObject:
   - component: {fileID: 144226044036443477}
   - component: {fileID: 7537278261473719092}
   m_Layer: 0
-  m_Name: Building2_PF (0)
+  m_Name: Greyish Building
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
