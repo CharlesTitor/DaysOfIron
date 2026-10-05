@@ -16,6 +16,7 @@ public class KaelAnimations : MonoBehaviour
 
     void Update()
     {
+        //necesitas un float por que comparas con 0, por eso el .x
         float movementX=transform.position.x-_lastPosition.x;
 
         if (movementX!=0)
@@ -29,10 +30,9 @@ public class KaelAnimations : MonoBehaviour
             {
                 _kaelSprite.flipX=false;
             }
-            else
-            {
-                _kaelAnimator.SetBool("IsWalking",false);
-            }
+        } else
+        {
+            _kaelAnimator.SetBool("IsWalking",false);
         }
 
         _lastPosition=transform.position;
