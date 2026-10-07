@@ -3,17 +3,12 @@ using UnityEngine;
 
 public class DialogueQuestGiver : MonoBehaviour
 {
-    [SerializeField] private int _necessaryNodeID;
-    [SerializeField] private QuestManager _questSelected;
+    [SerializeField] private Quest _quest;
 
-    public NPCConversation npcConversation;
-
-    public void CorrectID()
+    public void StartQuest()
     {
 
-        //if (correctID == _necessaryNodeID)
-        //{
-        //    _questSelected.QuestActivated();
-        //}
+        QuestManager.Instance.StartQuest(_quest);
+        Debug.Log("Quest Started");
     }
 }
