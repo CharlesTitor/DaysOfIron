@@ -6,12 +6,10 @@ using UnityEngine.AI;
 public class Character : MonoBehaviour
 {
     private NavMeshAgent agent;
-   
 
     [Header("Movement Settings")]
     public float moveSpeed = 10f;
 
-    [Header("Movement Settings")]
     [SerializeField] float sampleDistance = 0.5f;
     [SerializeField] LayerMask groundLayer;
 
@@ -20,8 +18,6 @@ public class Character : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        
-
         agent.speed = moveSpeed;
     }
 
