@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class CursorObject : MonoBehaviour
 {
-    Color _startColor;
+    //Color _startColor;
+    private Material originalMaterial;
     [SerializeField] private Renderer _renderer;
+    [SerializeField] private Material _outlineMaterial;
 
     [SerializeField] private CursorManager.CursorType _cursorType;
 
@@ -16,8 +18,10 @@ public class CursorObject : MonoBehaviour
         CursorManager.Instance.SetActiveCursorType(_cursorType);
         if (_cursorType == CursorManager.CursorType.Interactable)
         {
-            _startColor = _renderer.material.color;
-            _renderer.material.color = Color.yellow;
+            //_startColor = _renderer.material.color;
+            //_renderer.material.color = Color.yellow;
+            originalMaterial = _renderer.material;
+            _renderer.material = _outlineMaterial;
         }
     }
 
@@ -26,7 +30,17 @@ public class CursorObject : MonoBehaviour
         CursorManager.Instance.SetActiveCursorType(CursorManager.CursorType.Default);
         if (_cursorType == CursorManager.CursorType.Interactable)
         {
-            _renderer.material.color = _startColor;
+            _renderer.material=originalMaterial;
         }
     }
+
+    private void OnDestroy()
+    {
+        CursorManager.Instance.SetActiveCursorType(CursorManager.CursorType.Default);
+        if (_cursorType == CursorManager.CursorType.Interactable)
+        {
+            _renderer.material = originalMaterial;
+        }
+    }
+
 }
