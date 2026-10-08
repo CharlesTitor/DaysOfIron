@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 
 public class QuestManager : MonoBehaviour
@@ -37,7 +36,8 @@ public class QuestManager : MonoBehaviour
         }
         return false;
     }
-    public void UpdateQuestObjective(ItemData item, int itemCuantity)
+
+    public void UpdateQuestObjective(ItemData item, int itemQuantity)
     {
         foreach (QuestProgress questProgress in _activeQuests)
         {
@@ -45,7 +45,7 @@ public class QuestManager : MonoBehaviour
             {
                 if (objective.type == ObjectiveType.CollectItem && objective.ItemRequired == item)
                 {
-                    objective.currentAmount += itemCuantity;
+                    objective.currentAmount += itemQuantity;
                     Debug.Log($"You have {objective.currentAmount} of {objective.requiredAmount}");
                     if (questProgress.isCompleted) { Debug.Log("Quest completed"); }
                 }
