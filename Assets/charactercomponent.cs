@@ -18,7 +18,6 @@ public class Character : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-
         agent.speed = moveSpeed;
     }
 
