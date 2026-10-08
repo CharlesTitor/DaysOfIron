@@ -29,7 +29,7 @@ public class QuestManager : MonoBehaviour
     {
         foreach (QuestProgress questProgress in _activeQuests)
         {
-            if(questProgress.quest == quest)
+            if(questProgress.Quest == quest)
             {
                 return true;
             }
@@ -41,13 +41,13 @@ public class QuestManager : MonoBehaviour
     {
         foreach (QuestProgress questProgress in _activeQuests)
         {
-            foreach (QuestObjective objective in questProgress.objectives)
+            foreach (QuestObjective objective in questProgress.Objectives)
             {
-                if (objective.type == ObjectiveType.CollectItem && objective.ItemRequired == item)
+                if (objective.Type == ObjectiveType.CollectItem && objective.ItemRequired == item)
                 {
-                    objective.currentAmount += itemQuantity;
-                    Debug.Log($"You have {objective.currentAmount} of {objective.requiredAmount}");
-                    if (questProgress.isCompleted) { Debug.Log("Quest completed"); }
+                    objective.CurrentAmount += itemQuantity;
+                    Debug.Log($"You have {objective.CurrentAmount} of {objective.RequiredAmount}");
+                    if (questProgress.IsCompleted) { Debug.Log("Quest completed"); }
                 }
             }
         }

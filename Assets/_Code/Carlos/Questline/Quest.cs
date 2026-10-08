@@ -1,5 +1,6 @@
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
+using System.Collections.Generic;
 
 public enum ObjectiveType
 {
@@ -16,28 +17,36 @@ public class QuestObjective
 
     public string ObjectiveID;
     public ItemData ItemRequired;
-    public string description;
-    public ObjectiveType type;
-    public int requiredAmount;
-    public int currentAmount;
+    [FormerlySerializedAs("description")]
+    public string Description;
+    [FormerlySerializedAs("type")]
+    public ObjectiveType Type;
+    [FormerlySerializedAs("requiredAmount")]
+    public int RequiredAmount;
+    [FormerlySerializedAs("currentAmount")]
+    public int CurrentAmount;
 
-    public bool isCompleted => currentAmount >= requiredAmount;
+    public bool IsCompleted => CurrentAmount >= RequiredAmount;
 }
 
 [CreateAssetMenu(fileName = "NewQuest", menuName = "Quests/Quest")]
 public class Quest : ScriptableObject
 {
-    public string questID;
-    public string questName;
+    [FormerlySerializedAs("questID")]
+    public string QuestID;
+    [FormerlySerializedAs("questName")]
+    public string QuestName;
     [TextArea]
-    public string description;
-    public List<QuestObjective> objectives = new List<QuestObjective>();
+    [FormerlySerializedAs("description")]
+    public string Description;
+    [FormerlySerializedAs("objectives")]
+    public List<QuestObjective> Objectives = new List<QuestObjective>();
 
     private void OnValidate()
     {
-        if (string.IsNullOrEmpty(questID))
+        if (string.IsNullOrEmpty(QuestID))
         {
-            questID = questName + "_" + System.Guid.NewGuid().ToString().Substring(0, 8);
+            QuestID = QuestName + "_" + System.Guid.NewGuid().ToString().Substring(0, 8);
         }
     }
 }
@@ -45,28 +54,30 @@ public class Quest : ScriptableObject
 [System.Serializable]
 public class QuestProgress
 {
-    public Quest quest;
-    public List<QuestObjective> objectives;
+    [FormerlySerializedAs("quest")]
+    public Quest Quest;
+    [FormerlySerializedAs("objectives")]
+    public List<QuestObjective> Objectives;
 
     public QuestProgress(Quest quest)
     {
-        this.quest = quest;
-        objectives = new List<QuestObjective>();
+        this.Quest = quest;
+        this.Objectives = new List<QuestObjective>();
 
-        foreach (var obj in quest.objectives)
+        foreach (QuestObjective objective in quest.Objectives)
         {
-            objectives.Add(new QuestObjective
+            Objectives.Add(new QuestObjective
             {
-                ObjectiveID = obj.ObjectiveID,
-                ItemRequired = obj.ItemRequired,
-                description = obj.description,
-                type = obj.type,
-                requiredAmount = obj.requiredAmount,
-                currentAmount = 0
+                ObjectiveID = objective.ObjectiveID,
+                ItemRequired = objective.ItemRequired,
+                Description = objective.Description,
+                Type = objective.Type,
+                RequiredAmount = objective.RequiredAmount,
+                CurrentAmount = 0
             });
         }
     }
 
-    public bool isCompleted => objectives.TrueForAll(o => o.isCompleted);
-    public string questID => quest.questID;
+    public bool IsCompleted => Objectives.TrueForAll(o => o.IsCompleted);
+    public string QuestID => Quest.QuestID;
 }
