@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance;
+    public HotbarManager HotbarManager;
 
     public List<Item> inventory = new List<Item>();
 
@@ -24,7 +25,7 @@ public class InventoryManager : MonoBehaviour
     private void Start()
     {
 
-        GetComponent<HotbarManager>().RefreshHotbar();
+        HotbarManager.RefreshHotbar();
         GetComponent<InventoryManagerUI>().RefreshInventoryUI();
     }
 
