@@ -35,10 +35,12 @@ public class InventoryManager : MonoBehaviour
             if(item.ItemData.ItemName == typeOfItem.ItemName)
             {
                 item.itemQuantity += cuantityOfItem;
+                QuestManager.Instance.UpdateQuestObjective(typeOfItem, cuantityOfItem);
                 return;
             }
         }
 
         inventory.Add(new Item { ItemData = typeOfItem, itemQuantity = cuantityOfItem });
+        QuestManager.Instance.UpdateQuestObjective(typeOfItem, cuantityOfItem);
     }
 }

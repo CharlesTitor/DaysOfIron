@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6496fda2eea017449b95c3ea2127df50, type: 3}
+  m_Name: OtherTreeQuest
+  m_EditorClassIdentifier: Assembly-CSharp::Quest
+  questID: ' '
+  questName: OtherTreeQuest
+  description: Go and find 2 iron ingots bring it to the goofy ass tree that request
+    those.
+  objectives:
+  - ItemRequired:
+      ItemData: {fileID: 0}
+      itemQuantity: 0
+    description: Collect 2 iron ingots
+    type: 0
+    requiredAmount: 2
+    currentAmount: 0
