@@ -1,38 +1,45 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 
 public class Character : MonoBehaviour
 {
-    private NavMeshAgent agent;
+    private NavMeshAgent _navMeshAgent;
 
     [Header("Movement Settings")]
-    public float moveSpeed = 10f;
+    [FormerlySerializedAs("moveSpeed")]
+    public float MoveSpeed = 10f;
 
-    [SerializeField] float sampleDistance = 0.5f;
-    [SerializeField] LayerMask groundLayer;
+    [FormerlySerializedAs("sampleDistance")]
+    [SerializeField] float _sampleDistance = 0.5f;
+    [FormerlySerializedAs("groundLayer")]
+    [SerializeField] LayerMask _groundLayer;
 
     public static event System.Action<Vector3> OnGroundTouch;
 
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
-        agent.speed = moveSpeed;
+        _navMeshAgent = GetComponent<NavMeshAgent>();
+        _navMeshAgent.speed = MoveSpeed;
     }
 
     void Update()
+    {
+        GroundClickVerification();
+    }
+
+    private void GroundClickVerification()
     {
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, groundLayer))
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, _groundLayer))
             {
-                if (NavMesh.SamplePosition(hit.point, out NavMeshHit navMeshHit, sampleDistance, NavMesh.AllAreas))
+                if (NavMesh.SamplePosition(hit.point, out NavMeshHit navMeshHit, _sampleDistance, NavMesh.AllAreas))
                 {
-                    agent.SetDestination(navMeshHit.position);
+                    _navMeshAgent.SetDestination(navMeshHit.position);
                     OnGroundTouch?.Invoke(navMeshHit.position);
                 }
                 else
