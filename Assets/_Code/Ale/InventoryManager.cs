@@ -1,11 +1,12 @@
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Serialization;
 
 public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance;
-
-    public List<Item> inventory = new List<Item>();
+    [FormerlySerializedAs("inventory")]
+    public List<Item> Inventory = new List<Item>();
 
     private void Awake()
     {
@@ -30,17 +31,17 @@ public class InventoryManager : MonoBehaviour
 
     public void AddItem(ItemData typeOfItem, int cuantityOfItem)
     {
-        foreach (Item item in inventory)
+        foreach (Item item in Inventory)
         {
             if(item.ItemData.ItemName == typeOfItem.ItemName)
             {
-                item.itemQuantity += cuantityOfItem;
+                item.ItemQuantity += cuantityOfItem;
                 QuestManager.Instance.UpdateQuestObjective(typeOfItem, cuantityOfItem);
                 return;
             }
         }
 
-        inventory.Add(new Item { ItemData = typeOfItem, itemQuantity = cuantityOfItem });
+        Inventory.Add(new Item { ItemData = typeOfItem, ItemQuantity = cuantityOfItem });
         QuestManager.Instance.UpdateQuestObjective(typeOfItem, cuantityOfItem);
     }
 }

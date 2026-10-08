@@ -1,12 +1,10 @@
 using System;
-using UnityEngine;
+using UnityEngine.Serialization;
 
 [Serializable]
 public class Item
 {
     public ItemData ItemData;
-
-    public int itemQuantity;
-
-
+    [FormerlySerializedAs("itemQuantity")]
+    public int ItemQuantity;
 }

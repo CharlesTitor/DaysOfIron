@@ -34,20 +34,20 @@ public class HotbarManager : MonoBehaviour
             Destroy(slot.gameObject);
         }
 
-        int numberOfSlots = Mathf.Min(_slotQuantity, InventoryManager.Instance.inventory.Count);
+        int numberOfSlots = Mathf.Min(_slotQuantity, InventoryManager.Instance.Inventory.Count);
 
         
         for (int i=0; i<numberOfSlots; i++)
         {
-            Item item= InventoryManager.Instance.inventory[i];
+            Item item= InventoryManager.Instance.Inventory[i];
 
             GameObject newItemSlot= Instantiate(ItemSlotPrefab, HotbarContainer);
 
             ItemSlotUI itemSlotUI= newItemSlot.GetComponent<ItemSlotUI>();
 
-            itemSlotUI.itemIconImage.sprite = item.ItemData.ItemIcon;
-            itemSlotUI.itemNameText.text = item.ItemData.ItemName;
-            itemSlotUI.itemQuantityText.text = "x" + item.itemQuantity.ToString();
+            itemSlotUI.ItemIconImage.sprite = item.ItemData.ItemIcon;
+            itemSlotUI.ItemNameText.text = item.ItemData.ItemName;
+            itemSlotUI.ItemQuantityText.text = "x" + item.ItemQuantity.ToString();
         }
     }
 

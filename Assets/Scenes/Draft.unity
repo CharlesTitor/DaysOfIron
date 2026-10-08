@@ -909,6 +909,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CursorObject
   _renderer: {fileID: 0}
+  _outlineMaterial: {fileID: 0}
   _cursorType: 1
 --- !u!54 &266988521
 Rigidbody:
@@ -1672,6 +1673,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CursorObject
   _renderer: {fileID: 0}
+  _outlineMaterial: {fileID: 0}
   _cursorType: 1
 --- !u!54 &563858910
 Rigidbody:
@@ -2278,6 +2280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CursorObject
   _renderer: {fileID: 0}
+  _outlineMaterial: {fileID: 0}
   _cursorType: 1
 --- !u!54 &759619153
 Rigidbody:
@@ -3259,6 +3262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CursorObject
   _renderer: {fileID: 0}
+  _outlineMaterial: {fileID: 0}
   _cursorType: 1
 --- !u!54 &984926984
 Rigidbody:
@@ -5198,6 +5202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CursorObject
   _renderer: {fileID: 0}
+  _outlineMaterial: {fileID: 0}
   _cursorType: 1
 --- !u!54 &1708398213
 Rigidbody:
@@ -5625,6 +5630,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48fdb6c46fa2fdb4eb1d4b74f3b3c8c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KaelAnimations
+  _movementThreshold: 0.05
+  _idleDelay: 0.1
 --- !u!1 &1902825491
 GameObject:
   m_ObjectHideFlags: 0
@@ -5643,7 +5650,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1902825492
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5755,7 +5762,7 @@ RectTransform:
   m_GameObject: {fileID: 1946609983}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 12.622224, y: 6.4145155, z: 5.5759}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 96726594}
@@ -5763,8 +5770,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -30.5, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1000, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1946609985
 MonoBehaviour:
@@ -5888,8 +5895,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e60f3da496c16544e8d8f962d3c9166e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryManagerUI
-  itemSlotPrefab: {fileID: 600777800643513836, guid: 3eb0e87957f27b44da3483711b38ef5c, type: 3}
-  inventoryContainer: {fileID: 96726594}
+  ItemSlotPrefab: {fileID: 600777800643513836, guid: 3eb0e87957f27b44da3483711b38ef5c, type: 3}
+  InventoryContainer: {fileID: 96726594}
 --- !u!114 &1974696920
 MonoBehaviour:
   m_ObjectHideFlags: 0
