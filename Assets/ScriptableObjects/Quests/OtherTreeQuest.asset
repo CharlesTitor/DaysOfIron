@@ -17,9 +17,8 @@ MonoBehaviour:
   description: Go and find 2 iron ingots bring it to the goofy ass tree that request
     those.
   objectives:
-  - ItemRequired:
-      ItemData: {fileID: 0}
-      itemQuantity: 0
+  - ObjectiveID: CollectIron
+    ItemRequired: {fileID: 11400000, guid: d251c330ecb85dc43b99668a93984231, type: 2}
     description: Collect 2 iron ingots
     type: 0
     requiredAmount: 2
