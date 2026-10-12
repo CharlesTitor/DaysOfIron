@@ -1,10 +1,14 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
+using UnityEngine.Serialization;
 
 public class ItemSlotUI : MonoBehaviour
 {
-    public Image itemIconImage;
-    public TMP_Text itemNameText;
-    public TMP_Text itemQuantityText;
+    [FormerlySerializedAs("itemIconImage")]
+    public Image ItemIconImage;
+    [FormerlySerializedAs("itemNameText")]
+    public TMP_Text ItemNameText;
+    [FormerlySerializedAs("itemQuantityText")]
+    public TMP_Text ItemQuantityText;
 }
