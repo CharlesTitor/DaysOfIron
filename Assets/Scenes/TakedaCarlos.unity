@@ -383,7 +383,7 @@ MonoBehaviour:
     m_Flags: 0
     m_Priority: 0
   _interactClick:
-    m_Name: 
+    m_Name: Interact Click
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: 95508b59-a99c-43e3-b374-1758054a48b8
@@ -1635,7 +1635,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 71306a472aa79c644a08b72dd4992fc3, type: 2}
+  - {fileID: 2100000, guid: 1d577257d13b05c4d9ddba275a75ae44, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

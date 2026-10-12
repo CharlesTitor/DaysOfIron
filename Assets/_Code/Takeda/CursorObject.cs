@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Collider))]
 //[RequireComponent (typeof(Rigidbody))]
@@ -15,13 +16,16 @@ public class CursorObject : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        CursorManager.Instance.SetActiveCursorType(_cursorType);
-        if (_cursorType == CursorManager.CursorType.Interactable)
+        if (!EventSystem.current.IsPointerOverGameObject())
         {
-            //_startColor = _renderer.material.color;
-            //_renderer.material.color = Color.yellow;
-            _originalMaterial = _renderer.material;
-            _renderer.material = _outlineMaterial;
+            CursorManager.Instance.SetActiveCursorType(_cursorType);
+            if (_cursorType == CursorManager.CursorType.Interactable)
+            {
+                //_startColor = _renderer.material.color;
+                //_renderer.material.color = Color.yellow;
+                _originalMaterial = _renderer.material;
+                _renderer.material = _outlineMaterial;
+            }
         }
     }
 

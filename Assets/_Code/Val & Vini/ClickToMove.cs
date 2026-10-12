@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
+using UnityEngine.EventSystems;
 
 
 public class ClickToMove : MonoBehaviour , IInteractor
@@ -53,36 +54,42 @@ public class ClickToMove : MonoBehaviour , IInteractor
    }
 
 
-   private void Move(InputAction.CallbackContext context) //informacion de lo que acaba de ocurrir
-   {
+    private void Move(InputAction.CallbackContext context) //informacion de lo que acaba de ocurrir
+    {
         /*
         ray= linea invisible que sale desde un punto hacia piso (como un puntero laser)
         ScreenPointToRay=es para que el 2d del click del mouse se pueda leer en 3d
             -Donde damos click-> saca el rayo laser de ahi hasta que toque piso (ese es z)
             Physics.Raycast= pregunta si el rayo choco con piso
         */
-        mousePosition=Mouse.current.position.ReadValue();
-        ray= camera.ScreenPointToRay(mousePosition);
-        RaycastHit hit; //guardo la coordenada de donde llego el laser
-        isColliding=Physics.Raycast(ray, out hit); //Esto es para que le devuelva la informacion a hit y hit lo ponga en su memoria
-        if (isColliding && hit.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))//si toca algo que no es el piso
-        {
-            if (coroutine!=null) //Si se clickean en muchos lugares pausa en el que estaba y cambia su direccion al ultimo lugar donde clickeaste
+        if (!EventSystem.current.IsPointerOverGameObject()) { 
+            mousePosition = Mouse.current.position.ReadValue();
+            ray = camera.ScreenPointToRay(mousePosition);
+            RaycastHit hit; //guardo la coordenada de donde llego el laser
+            isColliding = Physics.Raycast(ray, out hit); //Esto es para que le devuelva la informacion a hit y hit lo ponga en su memoria
+            if (isColliding && hit.collider.gameObject.layer == LayerMask.NameToLayer("Ground"))//si toca algo que no es el piso
             {
-                StopCoroutine(coroutine);
+                if (coroutine != null) //Si se clickean en muchos lugares pausa en el que estaba y cambia su direccion al ultimo lugar donde clickeaste
+                {
+                    StopCoroutine(coroutine);
+                }
+                Vector3 target = hit.point;
+                target.y = transform.position.y;
+                Vector3 indicatorPosition = hit.point;
+                indicatorPosition.y += 0.05f;
+                _moveIndicator.SetActive(true);
+                _moveIndicator.transform.position = indicatorPosition;
+                coroutine = StartCoroutine(PlayerMoveTowards(target));
+                targetUbication = target;
+
+
             }
-            Vector3 target = hit.point;
-            target.y = transform.position.y;
-            Vector3 indicatorPosition = hit.point;
-            indicatorPosition.y += 0.05f;
-            _moveIndicator.SetActive(true);
-            _moveIndicator.transform.position = indicatorPosition;
-            coroutine = StartCoroutine(PlayerMoveTowards(target));
-            targetUbication = target;
-
-
         }
-   }
+        else
+        {
+            Debug.Log("UI clicked");
+        }
+    }
 
     private void ClickInteract(InputAction.CallbackContext context)
     {
