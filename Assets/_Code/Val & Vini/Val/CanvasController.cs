@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class CanvasController : MonoBehaviour
 {
-    public GameObject InventoryCanvas;
+    [SerializeField] private GameObject _inventoryCanvas;
 
     private void Start()
     {
-        InventoryCanvas.SetActive(false);
+        _inventoryCanvas.SetActive(false);
     }
 
     private void Update()
@@ -19,13 +19,6 @@ public class CanvasController : MonoBehaviour
 
     private void OpenCloseInventory()
     {
-        if (InventoryCanvas.activeSelf == true)
-        {
-            InventoryCanvas.SetActive(false);
-        }
-        else
-        {
-            InventoryCanvas.SetActive(true);
-        }
+        _inventoryCanvas.SetActive(!_inventoryCanvas.activeSelf);
     }
 }

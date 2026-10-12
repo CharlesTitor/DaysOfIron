@@ -1,13 +1,16 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class HotbarManager : MonoBehaviour
 {
     public static HotbarManager Instance;
-    public Transform HotbarContainer;
-    public GameObject ItemSlotPrefab;
 
-    private int _slotQuantity=3;
+    [SerializeField] private Transform _hotbarContainer;
+    private  GameObject _itemSlotPrefab;
+
+    private int _slotQuantity = 3;
+
+    public Transform HotbarContainer {  get { return _hotbarContainer; } }
+
 
     private void Awake()
     {
@@ -41,7 +44,7 @@ public class HotbarManager : MonoBehaviour
         {
             Item item= InventoryManager.Instance.Inventory[i];
 
-            GameObject newItemSlot= Instantiate(ItemSlotPrefab, HotbarContainer);
+            GameObject newItemSlot= Instantiate(_itemSlotPrefab, HotbarContainer);
 
             ItemSlotUI itemSlotUI= newItemSlot.GetComponent<ItemSlotUI>();
 
